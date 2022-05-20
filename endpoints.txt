@@ -1,0 +1,62 @@
+/artists
+
+exemplo:
+
+[   
+    {
+        "id": "d0bb4688-87ad-44cb-b81b-1e80a5d4ea70",
+        "name": "Taylor Swift"
+    },
+    {
+        "id": "0a5ac809-8105-4916-b7ba-c1c609252eeb",
+        "name": "Drake"
+    }
+]
+
+-----------------
+/artist/<artist_id>
+
+exemplo: /artist/d0bb4688-87ad-44cb-b81b-1e80a5d4ea70
+
+{
+    "id": "d0bb4688-87ad-44cb-b81b-1e80a5d4ea70",
+    "name": "Taylor Swift",
+    "birthDate": "13/12/1989",
+    "origin": "West Reading, Berks County, Pennsylvania, United States",
+    "imageUrl": "https://lastfm.freetls.fastly.net/i/u/770x0/cda8a2406d8561e60d8d5cab2c46f57c.jpg#cda8a2406d8561e60d8d5cab2c46f57c",
+}
+
+
+-----------------
+/recommendation/<artist_id>
+
+exemplo: /recommendation/b2b4af1e-b8b0-419c-a13f-24a6eeac1921
+obs.: Avril Lavigne
+
+[   
+    {
+        "id": "b9336da4-9009-4f4b-88ac-525a9dc20652",
+        "name": "Carly Rae Jepsen",
+        "imageUrl": "https://lastfm.freetls.fastly.net/i/u/770x0/b2ae2e773c266f4028e2c96f3d4d9703.jpg#b2ae2e773c266f4028e2c96f3d4d9703"
+    },
+    {
+        "id": "39d7d04d-11f2-4f08-b61d-1aa402ee546a",
+        "name": "Alanis Morissette",
+        "imageUrl": "https://lastfm.freetls.fastly.net/i/u/770x0/62225e85ffd9e08f5b2c67a04bed2cd2.jpg#62225e85ffd9e08f5b2c67a04bed2cd2"
+    },
+    {
+        "id": "d5608e2f-2104-4b7c-a009-f1930005a2ff",
+        "name": "Shakira",
+        "imageUrl": "https://lastfm.freetls.fastly.net/i/u/770x0/3374c3b3e708c4c563430ad23d0fdd3d.jpg#3374c3b3e708c4c563430ad23d0fdd3d"
+    },
+    {
+        "id": "05cb2e34-04eb-49c4-9799-7302479725ef",
+        "name": "Nelly Furtado",
+        "imageUrl": "https://lastfm.freetls.fastly.net/i/u/770x0/45500bc2794bbac335a656c8240f5a47.jpg#45500bc2794bbac335a656c8240f5a47" 
+    },
+    {
+        "id": "90e1102d-e352-4b3e-922a-f747ce0044ca",
+        "name": "Christina Aguilera",
+        "imageUrl": "https://lastfm.freetls.fastly.net/i/u/770x0/8a77c6cdc29c2001147cd2bd64e9474f.jpg#8a77c6cdc29c2001147cd2bd64e9474f"
+    }
+]
