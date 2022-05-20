@@ -2,9 +2,8 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 
-from sklearn.cluster import KMeans
 from sklearn.metrics.pairwise import cosine_similarity
-from src.domain.entity.Artist import Artist
+from src.domain.adapter.ArtistAdapter import ArtistAdapter
 
 from src.infra.repository.ArtistRepository import ArtistRepository
 from src.infra.client.MongoDbClient import MongoDbClient
@@ -17,11 +16,17 @@ class RecommendationService:
 
     def __init__(self):
         self.repository = ArtistRepository(MongoDbClient())
+        self.adapter = ArtistAdapter()
 
 
     def load_dataframe(self) -> pd.DataFrame:
         all_data = self.repository.get_all()
-
+        
+        all_data = [
+            self.adapter.to_json(artist)
+            for artist in all_data
+        ]
+        
         index = [data.get('id') for data in all_data]
 
         df = pd.DataFrame(all_data, index=index)
@@ -49,7 +54,6 @@ class RecommendationService:
         return cosine_similarity_data
 
     def recommend(self, index, cosine_similarity_data):
-        print(cosine_similarity_data.index)
         recommendation = cosine_similarity_data.loc[index].sort_values(ascending=False).index.tolist()[1:6]
 
         return recommendation
