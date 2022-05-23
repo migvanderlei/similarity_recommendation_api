@@ -26,6 +26,7 @@ class GetRecommendationUseCase:
         cosine_similarity_data = self.recommendation_service.load_cosine_similarity()
 
         if cosine_similarity_data is None:
+            data = self.recommendation_service.load_dataframe()
             cosine_similarity_data = self.recommendation_service.compute_cosine_similarity(
                 embeddings, data.index
             )

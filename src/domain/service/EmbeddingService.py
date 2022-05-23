@@ -4,10 +4,10 @@ import numpy as np
 
 CURRENT_PATH = str(Path(__file__).resolve().parent)
 DATA_PATH = CURRENT_PATH+'/../../../data'
-FILENAME = 'embeddings.npy'
+FILENAME = 'embeddings-mpnet.npy'
 
 class EmbeddingService():
-    def __init__(self, lazy_setup=True, model_name='distilbert-base-nli-mean-tokens'):
+    def __init__(self, lazy_setup=True, model_name='all-mpnet-base-v2'):
         self.lazy_setup = lazy_setup
         self.model_name = model_name
 

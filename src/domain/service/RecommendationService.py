@@ -10,7 +10,7 @@ from src.infra.client.MongoDbClient import MongoDbClient
 
 CURRENT_PATH = str(Path(__file__).resolve().parent)
 DATA_PATH = CURRENT_PATH+'/../../../data'
-FILENAME = 'cosine_similarity.csv'
+FILENAME = 'cosine_similarity-mnpnet.csv'
 
 class RecommendationService:
 
@@ -21,7 +21,6 @@ class RecommendationService:
 
     def load_dataframe(self) -> pd.DataFrame:
         all_data = self.repository.get_all()
-        
         all_data = [
             self.adapter.to_json(artist)
             for artist in all_data
@@ -49,9 +48,12 @@ class RecommendationService:
         return cosine_similarity_data
     
     def load_cosine_similarity(self) -> pd.DataFrame:
-        cosine_similarity_data = pd.read_csv(DATA_PATH+'/'+FILENAME, index_col=0)
+        try:
+            cosine_similarity_data = pd.read_csv(DATA_PATH+'/'+FILENAME, index_col=0)
 
-        return cosine_similarity_data
+            return cosine_similarity_data
+        except FileNotFoundError:
+            return None
 
     def recommend(self, index, cosine_similarity_data):
         recommendation = cosine_similarity_data.loc[index].sort_values(ascending=False).index.tolist()[1:6]
